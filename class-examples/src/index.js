@@ -9,19 +9,35 @@ import reportWebVitals from './reportWebVitals';
 import ConfirmDialog from './ch4/ConfirmDialog';
 // 문제점2 . 해당 함수형 컴포넌트 이름 첫글자 대문자로 변경하라고 
 import Tick from './ch4/Tick';
+import WeekendSchedule from './ch4/WeekendSchedule';
+import MyTest1 from './ch4/MyTest1';
+import CommentList from './ch5/CommentList';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <CommentList/>
+  </React.StrictMode> ,
+  document.getElementById('root')
+);
 
 //setInterval(콜백함수, 시간(ms)) -> 특정 시간마다, 첫번째 매개변수에서 
 // 정의한 함수가 실행한다. 
 // ReactDOM.render(그려지는 요소, 어디 밑에 그릴거야.)
-const test = () => {
-  ReactDOM.render(
-    <React.StrictMode>
-    <Tick/>
-  </React.StrictMode>,
-  document.getElementById('root')
-  );
-}
-setInterval(test , 1000);
+// const test = () => {
+//   ReactDOM.render(
+//     <React.StrictMode>
+    {/* <Tick/>
+    <WeekendSchedule sat="육아 및 집안일 " sun="티비 보면서 육아 및 집안일"/>
+    <WeekendSchedule sat="222 " sun="3333"/> */}
+    {/* <MyTest1  number={7}>
+      child 영역입니다.
+    </MyTest1> */}
+
+//   </React.StrictMode>,
+//   document.getElementById('root')
+//   );
+// }
+// setInterval(test , 1000);
  
 
 
