@@ -1,5 +1,6 @@
 //Comment.jsx
 import React from "react";
+import logo from "./lavar.png";
 
 const styles = {
   wrapper: {
@@ -37,11 +38,12 @@ const Comment = (props) => {
   return (
     <div style={styles.wrapper}>
       <div style={styles.imageContainer}>
-        <img
+        {/* <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOnFUycFr3ykvWaWp67PYuh-2QVb5xW_Cf17ii7mJ6iQ&s"
           alt="라바"
           style={styles.image}
-        />
+        /> */}
+        <img src={logo} alt="로컬사진" style={styles.image} />
       </div>
       <div style={styles.contentContainer}>
         <span style={styles.nameText}>이상용</span>
