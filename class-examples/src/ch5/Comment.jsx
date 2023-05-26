@@ -1,6 +1,9 @@
 //Comment.jsx
 import React from "react";
+// 현재 폴더 위치는 src/ch5/ 여기에 사진 파일이 있음.
+// ./ 현재 폴더 위치를 의미.
 import logo from "./lavar.png";
+import AvatarImg from "./AvatarImg";
 
 const styles = {
   wrapper: {
@@ -43,11 +46,12 @@ const Comment = (props) => {
           alt="라바"
           style={styles.image}
         /> */}
-        <img src={logo} alt="로컬사진" style={styles.image} />
+        {/* <img src={logo} alt="로컬사진" style={styles.image} /> */}
+        <AvatarImg src={logo} alt="사진1" style={styles.image} />
       </div>
       <div style={styles.contentContainer}>
-        <span style={styles.nameText}>이상용</span>
-        <span style={styles.commentText}>test 컴포넌트 </span>
+        <span style={styles.nameText}>{props.name}</span>
+        <span style={styles.commentText}>{props.comment} </span>
       </div>
     </div>
   );

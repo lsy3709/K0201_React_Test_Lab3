@@ -5,7 +5,8 @@ import Comment from "./Comment";
 const CommentList = (props) => {
   return (
     <div>
-      <Comment />
+      <Comment name="이상용" comment="댓글1" />
+      <Comment name="이상용2" comment="댓글2" />
     </div>
   );
 };
