@@ -15,6 +15,7 @@ import CommentList from './ch5/CommentList';
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* 부모 컴포넌트 */}
     <CommentList/>
   </React.StrictMode> ,
   document.getElementById('root')

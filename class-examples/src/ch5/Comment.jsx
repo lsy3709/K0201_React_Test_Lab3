@@ -1,5 +1,6 @@
 //Comment.jsx
 import React from "react";
+// 자식 컴포넌트
 // 현재 폴더 위치는 src/ch5/ 여기에 사진 파일이 있음.
 // ./ 현재 폴더 위치를 의미.
 import logo from "./lavar.png";
