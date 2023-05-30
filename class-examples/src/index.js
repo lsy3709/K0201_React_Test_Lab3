@@ -12,11 +12,15 @@ import Tick from './ch4/Tick';
 import WeekendSchedule from './ch4/WeekendSchedule';
 import MyTest1 from './ch4/MyTest1';
 import CommentList from './ch5/CommentList';
+import NotiList from './ch6/NotiList';
+
+// 생명주기를 테스트를 하는 코드에서, React.StrictMode 제거하고 실행하는게 가독성면에서 좋습니다. 
+// 수행이 2번씩 일어남. 
 
 ReactDOM.render(
   <React.StrictMode>
     {/* 부모 컴포넌트 */}
-    <CommentList/>
+    <NotiList/>
   </React.StrictMode> ,
   document.getElementById('root')
 );

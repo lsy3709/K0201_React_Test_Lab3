@@ -33,6 +33,7 @@ const styles = {
   },
 };
 
+// 자식
 class Noti extends Component {
   // 클래스 컴포넌트는 반드시 부모의 Component 상속 받아서 사용하고,
   // state 를 사용할려면, super 를 호출해야함. 의무사항.
@@ -41,6 +42,17 @@ class Noti extends Component {
     // 클래스 컴포넌트에서는 해당 state 상태에 접근시  this.state 로 접근한다.
     super(props);
     this.state = {};
+  }
+
+  //자식 부분에서 각 생명주기 함수들 콘솔로 찍어서 확인해보기.
+  componentDidMount() {
+    console.log("componentDidMount() 호출이 되었음.");
+  }
+  componentDidUpdate() {
+    console.log("componentDidUpdate() 호출이 되었음.");
+  }
+  componentWillUnmount() {
+    console.log("componentWillUnmount() 호출이 되었음.");
   }
 
   render() {
