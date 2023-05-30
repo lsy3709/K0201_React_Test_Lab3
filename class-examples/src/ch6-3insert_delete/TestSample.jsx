@@ -47,6 +47,8 @@ const TestSample = () => {
   };
 
   //추가 부분2 : 데이터 삭제. 더블 클릭시
+  // 예 : id =3 것만 제외하고, 새로운 배열을 생성한다.
+  // id : 1~ 4 까지, 있으면, 3만 제외하고 , 다시 배열 생성.
   const onRemove = (id) => {
     const nextNames = names.filter((name) => name.id !== id);
     setNames(nextNames);
