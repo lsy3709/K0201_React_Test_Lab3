@@ -22,23 +22,56 @@ const TestSample = () => {
     { id: 4, text: "이상용4" },
   ]);
 
+  //inputText : 입력창의미, 초기값 공백, 여기에 세터 함수도 현재 공백할당.
   const [inputText, setInputText] = useState("");
+  //nextId 더미 데이터의 아이디가 현재 4번까지 되어 있고, 추가 데이터부터 아이디가 5를 추가.
   const [nextId, setNextId] = useState(5);
 
+  // 입력창에 값이 변경시 , 콘솔 상에 변경사항 확인해보기.
   const onChange = (e) => setInputText(e.target.value);
+  // 콘솔 확인.
+  console.log(inputText);
+
+  //추가 부분 : 데이터 추가.
+  const onClick = () => {
+    // 기존 더미 데이터 배열에, 입력창에서 입력된 메세지와, 아이디를 추가하는 부분.
+    // 기존 배열에 , 특정 값을 추가해서 새롭게 배열 생성하는 방법.
+    const nextNames = names.concat({
+      id: nextId,
+      text: inputText,
+    });
+    setNextId(nextId + 1);
+    setNames(nextNames);
+    // 입력 후, 값 비워주기.
+    setInputText("");
+  };
+
+  //추가 부분2 : 데이터 삭제. 더블 클릭시
+  const onRemove = (id) => {
+    const nextNames = names.filter((name) => name.id !== id);
+    setNames(nextNames);
+  };
+
+  const nameList = names.map((name) => (
+    <li key={name.id} onDoubleClick={() => onRemove(name.id)}>
+      {name.text}
+    </li>
+  ));
 
   // names 라는 배열에 요소중에서 하나를 꺼낸 요소가 name이라고 보면 됩니다.
   // names 길이 :4 , 몇번 수행? 4번 수행을 합니다.
   // 수행의 결과는 li 라는 태그에 요소로 넣고 있음.
-  const nameList = names.map((name) => <li key={name.id}>{name.text}</li>);
+  //   const nameList = names.map((name) => <li key={name.id}>{name.text}</li>);
 
   {
     /* <div> 라고 명시 해야 하지만, 생략시 <Fragment> 생략가능 -> <> 표기가능  */
   }
   return (
     <>
+      {/* 실제로 화면을 그리면서, 위에서 작업한 변수 및 함수를 적용하기.  */}
+      {/* 단점, 메모리 상에서 작업중이라서, 새로 그리게 되면 값이 초기화 됨.  */}
       <input value={inputText} onChange={onChange} />
-      <button>추가</button>
+      <button onClick={onClick}>추가</button>
       <ul>{nameList}</ul>
     </>
   );
