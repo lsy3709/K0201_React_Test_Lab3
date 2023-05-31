@@ -20,6 +20,7 @@ import TestBefore from './ch7-2-useMemo/TestBefore';
 import TestAfter from './ch7-2-useMemo/TestAfter';
 import BeforeUseCallback from './ch7-3-useCallback/BeforeUseCallback';
 import AfterUseCallback from './ch7-3-useCallback/AfterUseCallback';
+import TextInputTest from './ch7/TextInputTest';
 
 // 생명주기를 테스트를 하는 코드에서, React.StrictMode 제거하고 실행하는게 가독성면에서 좋습니다. 
 // 수행이 2번씩 일어남. 
@@ -33,7 +34,7 @@ ReactDOM.render(
   {/* <Counter/> */}
   {/* <TestAfter/> */}
   {/* <BeforeUseCallback/> */}
-<AfterUseCallback/>
+<TextInputTest/>
   </React.StrictMode> ,
   document.getElementById('root')
 );
