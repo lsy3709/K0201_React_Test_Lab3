@@ -18,6 +18,8 @@ const TestAfter = () => {
   // useMemo 적용. useMemo(함수, 의존성 배열)
   //-> 의존성 배열 안에 변수, imNum 가 변경시에만, 함수가 다시 호출이 된다.
   // 적용 순서2
+  // calcComValue : 사용전에 함수이지만,
+  // calcComValue: useMemo 사용하면, 결과 값
   const calcComValue = useMemo(() => {
     console.log("복잡한 계산 중.....");
     return (imNum + 3 * 7 * 99999 * 9999999) / 0.123456;
@@ -27,7 +29,9 @@ const TestAfter = () => {
     <div className="App">
       <p>count: {count}</p>
       <button onClick={increase}>+1 추가</button>
-      <p>복잡한 연산 결괏값 : {calcComValue()}</p>
+      {/* 결과값 적용부분에 값으로 변경 */}
+      {/* <p>복잡한 연산 결괏값 : {calcComValue()}</p> */}
+      <p>복잡한 연산 결괏값 : {calcComValue}</p>
     </div>
   );
 };
