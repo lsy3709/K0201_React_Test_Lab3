@@ -15,6 +15,7 @@ import CommentList from './ch5/CommentList';
 import NotiList from './ch6/NotiList';
 import MenuItemList from './ch6-2/MenuItemList';
 import TestSample from './ch6-3insert_delete/TestSample';
+import Counter from './ch7/Counter';
 
 // 생명주기를 테스트를 하는 코드에서, React.StrictMode 제거하고 실행하는게 가독성면에서 좋습니다. 
 // 수행이 2번씩 일어남. 
@@ -24,7 +25,8 @@ ReactDOM.render(
     {/* 부모 컴포넌트 */}
     {/* <NotiList/> */}
     {/* <MenuItemList/> */}
-    <TestSample/>
+    {/* <TestSample/> */}
+  <Counter/>
   </React.StrictMode> ,
   document.getElementById('root')
 );
