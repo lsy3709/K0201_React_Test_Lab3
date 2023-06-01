@@ -24,27 +24,21 @@ import TextInputTest from './ch7/TextInputTest';
 import Toggle from './ch8/Toggle';
 import FileImageTest from './ch11/FileImageTest';
 import NameForm from './ch11/NameForm';
+import TestNullValue from './ch11/TestNullValue';
+import Calc from './ch12/Calc';
 
 // 생명주기를 테스트를 하는 코드에서, React.StrictMode 제거하고 실행하는게 가독성면에서 좋습니다. 
 // 수행이 2번씩 일어남. 
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* 부모 컴포넌트 */}
-    {/* <NotiList/> */}
-    {/* <MenuItemList/> */}
-    {/* <TestSample/> */}
-  {/* <Counter/> */}
-  {/* <TestAfter/> */}
-  {/* <BeforeUseCallback/> */}
-{/* <TextInputTest/> */}
-{/* <Toggle/> */}
-<FileImageTest/>
-<br/>
-<NameForm/>
+    <Calc/>
   </React.StrictMode> ,
   document.getElementById('root')
 );
+// setTimeout(() =>{
+//   ReactDOM.render(<input value={null}/>,document.getElementById('root'))
+// },1000)
 
 //setInterval(콜백함수, 시간(ms)) -> 특정 시간마다, 첫번째 매개변수에서 
 // 정의한 함수가 실행한다. 
