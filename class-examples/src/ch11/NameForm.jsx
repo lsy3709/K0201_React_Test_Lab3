@@ -53,6 +53,7 @@ const NameForm = (props) => {
         댓글 :
         <textarea rows={10} value={textAreaValue} onChange={handleChange} />
       </label>
+      <br />
       <button type="submit">제출</button>
     </form>
   );

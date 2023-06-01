@@ -39,9 +39,9 @@ ReactDOM.render(
   {/* <BeforeUseCallback/> */}
 {/* <TextInputTest/> */}
 {/* <Toggle/> */}
-<NameForm/>
-<br/>
 <FileImageTest/>
+<br/>
+<NameForm/>
   </React.StrictMode> ,
   document.getElementById('root')
 );
