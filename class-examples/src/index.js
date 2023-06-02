@@ -26,13 +26,15 @@ import FileImageTest from './ch11/FileImageTest';
 import NameForm from './ch11/NameForm';
 import TestNullValue from './ch11/TestNullValue';
 import Calc from './ch12/Calc';
+import WelcomeDialog from './ch13/WelcomeDialog';
+import Main from './ch14/Main';
 
 // 생명주기를 테스트를 하는 코드에서, React.StrictMode 제거하고 실행하는게 가독성면에서 좋습니다. 
 // 수행이 2번씩 일어남. 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Calc/>
+    <Main/>
   </React.StrictMode> ,
   document.getElementById('root')
 );
