@@ -31,13 +31,14 @@ import Main from './ch14/Main';
 import MainPage from './ch15/MainPage';
 import Sample from './ch15/Sample';
 import CallbackTest2 from './ch17-pdtest/CallbackTest2';
+import ItemList from './ch17-pdtest/ItemList';
 
 // 생명주기를 테스트를 하는 코드에서, React.StrictMode 제거하고 실행하는게 가독성면에서 좋습니다. 
 // 수행이 2번씩 일어남. 
 
 ReactDOM.render(
   <React.StrictMode>
-    <CallbackTest2/>
+    <ItemList/>
   </React.StrictMode> ,
   document.getElementById('root')
 );
