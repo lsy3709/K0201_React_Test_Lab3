@@ -1,4 +1,10 @@
-import React from 'react';
+// 건너가는 작업. useState, useCallback
+//useCallback -> 업데이트시 매번 함수가 새롭게 생성되면, 된다? 안된다. 
+// useCallback(콜백함수, 의존성배열) -> 의존성 배열 3가지. : 빈 배열. 
+
+
+import React, {useState, useCallback} from 'react';
+
 // 문제점1
 //react-dom/client 하위에는 render 라는 함수가 없음. 
 // react-dom 고쳐야 함. 
@@ -37,10 +43,18 @@ import Categories from './ch17-pdtest/Components/Categories';
 // 생명주기를 테스트를 하는 코드에서, React.StrictMode 제거하고 실행하는게 가독성면에서 좋습니다. 
 // 수행이 2번씩 일어남. 
 
+// 훅스 최고 부모에서 정의를 해야하고, 
+// 현재 상태는, 최고 부모 없음, 
+// App.js (최고 부모) -> 1) Categories 2) ItemList
+// const [category, setCategory] = useState('food')
+// const onSelect = useCallback(category => setCategory(category),[])
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <Categories/>
-    <ItemList/>
+    <App/>
+    {/* <Categories category={category} onSelect={onSelect}/>
+    <ItemList category={category}/> */}
   </React.StrictMode> ,
   document.getElementById('root')
 );
