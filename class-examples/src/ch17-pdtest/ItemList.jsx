@@ -24,7 +24,8 @@ const ItemListBlock = styled.div`
 //   MAIN_IMG_NORMAL: "https://via.placeholder.com/160",
 // };
 
-const ItemList = () => {
+// 부모에서 props 로 전달 합니다. category
+const ItemList = ({ category }) => {
   //state 관리 하기위한 변수들, 하나는 데이터, 로딩(받고있는지 상태 여부)
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -43,20 +44,43 @@ const ItemList = () => {
         // axios 의 반환 타입이 Promise
         // get 함수의 인자값으로 : 공공데이터 주소가 들어옵니다.
         //
-        const response = await axios.get(
-          "https://apis.data.go.kr/6260000/FoodService/getFoodKr?serviceKey=ALRX9GpugtvHxcIO%2FiPg1vXIQKi0E6Kk1ns4imt8BLTgdvSlH%2FAKv%2BA1GcGUQgzuzqM3Uv1ZGgpG5erOTDcYRQ%3D%3D&numOfRows=100&pageNo=1&resultType=json"
-        );
-        //response.data 이부분 까지 는 고정이고, 해당 공공데이터의 데이터 구조 타입에 따라서 조금씩 다름.
-        //ex)
-        console.log(response.data.getFoodKr.item);
-        setArticles(response.data.getFoodKr.item);
+
+        //추가 작업, 스위치 케이스로 분기 설정.
+        const query = category === "food" ? "food" : `${category}`;
+
+        switch (query) {
+          case "food":
+            var response = await axios.get(
+              "https://apis.data.go.kr/6260000/FoodService/getFoodKr?serviceKey=ALRX9GpugtvHxcIO%2FiPg1vXIQKi0E6Kk1ns4imt8BLTgdvSlH%2FAKv%2BA1GcGUQgzuzqM3Uv1ZGgpG5erOTDcYRQ%3D%3D&numOfRows=100&pageNo=1&resultType=json"
+            );
+            //response.data 이부분 까지 는 고정이고, 해당 공공데이터의 데이터 구조 타입에 따라서 조금씩 다름.
+            //ex)
+            console.log(response.data.getFoodKr.item);
+            setArticles(response.data.getFoodKr.item);
+            break;
+
+          case "walking":
+            var response = await axios.get(
+              "https://apis.data.go.kr/6260000/WalkingService/getWalkingKr?serviceKey=ALRX9GpugtvHxcIO%2FiPg1vXIQKi0E6Kk1ns4imt8BLTgdvSlH%2FAKv%2BA1GcGUQgzuzqM3Uv1ZGgpG5erOTDcYRQ%3D%3D&pageNo=1&numOfRows=100&resultType=json"
+            );
+            //response.data 이부분 까지 는 고정이고, 해당 공공데이터의 데이터 구조 타입에 따라서 조금씩 다름.
+            //ex)
+            console.log(response.data.getWalkingKr.item);
+            setArticles(response.data.getWalkingKr.item);
+            break;
+
+          default:
+            alert("카테고리 선택 해주세요.");
+        }
       } catch (e) {
         console.log(e);
       }
       setLoading(false);
     };
     fetchData();
-  }, []);
+    //앞에서는 하나의 공공데이터만 받아 와서 작업을 하니까 빈배열
+    // 의존성 배열에 category  부분에 따라서 , 데이터를 호출하는 부분이 다릅니다.
+  }, [category]);
 
   //대기중일 때
   if (loading) {

@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 //name 은 작업 할 때 사용할 변수.
 //text 실제 웹 화면에 보이는 한글 이름.
@@ -12,6 +12,11 @@ const categories = [
 // white-space: pre; -> 텍스트와 줄바꿈, 공백을 그대로 유지.
 // overflow-x: auto; -> 가로 공간을 넘어가면 스크롤바를 이용해서 볼수 있게 함.
 //   font-weight : 600; -> 100 ~ 900 : 굵기를 의미.
+
+//추가 UI
+// 선택된 카테고리 값에 따라 스타일 변경.
+// 카테고리 값을 state 관리, 라우터를 적용하기 전 버전.
+// css 요소를 추가.
 const CategoriesBlock = styled.div`
   display: flex;
   padding: 1rem;
@@ -34,26 +39,38 @@ const Category = styled.div`
     color: #495057;
   }
 
-  &.active {
-    font-weight: 600;
-    border-bottom: 2px solid #22b8cf;
-    color: #22b8cf;
-    &:hover {
-      color: #3bc9db;
-    }
-  }
+  ${(props) =>
+    props.active &&
+    css`
+      font-weight: 600px;
+      border-bottom: 2px solid #22b8cf;
+      color: #22b8cf;
+      &:hover {
+        color: #3bc9db;
+      }
+    `}
 
   & + & {
     margin-left: 1rem;
   }
 `;
 
-const Categories = () => {
+// props 부모 -> 자식 데이터 전달. 사용.
+// state 끌어올리기, 자식 -> 부모 : 이벤트(부모에 설정이된 세터함수.)
+// 예) onSelect 함수가 호출이 되면, 부모쪽 App.js 에 선언된 세터함수가 호출 되면서, 업데이트가 됨.
+// props 객체 (읽기전용)-> 불변성. 순수함수.
+const Categories = ({ onSelect, category }) => {
   return (
     <CategoriesBlock>
       {/* c -> name: 'food', text: '부산맛집정보 서비스' */}
       {categories.map((c) => (
-        <Category key={c.name}>{c.text}</Category>
+        <Category
+          key={c.name}
+          active={category === c.name}
+          onClick={() => onSelect(c.name)}
+        >
+          {c.text}
+        </Category>
       ))}
     </CategoriesBlock>
   );
