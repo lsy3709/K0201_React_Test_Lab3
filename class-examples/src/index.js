@@ -2,6 +2,14 @@
 //useCallback -> 업데이트시 매번 함수가 새롭게 생성되면, 된다? 안된다. 
 // useCallback(콜백함수, 의존성배열) -> 의존성 배열 3가지. : 빈 배열. 
 
+//추가 라우팅 : 
+// 간단 설명. route(길), router(길 안내자.) , routing(길 안내를 한다. )
+// URL 라우팅 -> 페이징 라우팅 
+// ex) https://www.eaxmple.com : 호스트 서버 
+// ex2) https://www.eaxmple.com/tests -> /tests : path
+// BrowserRouter -> 웹 브라우저의 히스토리 기능을 이용해서, 페이지 라우팅 하는 형식임. 
+// Routes, Route
+import {BrowserRouter} from 'react-router-dom'
 
 import React, {useState, useCallback} from 'react';
 
@@ -49,13 +57,14 @@ import Categories from './ch17-pdtest/Components/Categories';
 // const [category, setCategory] = useState('food')
 // const onSelect = useCallback(category => setCategory(category),[])
 
-
+// 순서2 , 위에서 설정한 BrowserRouter 를 
+// 최고 부모의 컴포넌트를 감싸면 됩니다. 
+//라우팅시 
 ReactDOM.render(
-  <React.StrictMode>
+    <BrowserRouter>
     <App/>
-    {/* <Categories category={category} onSelect={onSelect}/>
-    <ItemList category={category}/> */}
-  </React.StrictMode> ,
+    </BrowserRouter>
+   ,
   document.getElementById('root')
 );
 // setTimeout(() =>{
