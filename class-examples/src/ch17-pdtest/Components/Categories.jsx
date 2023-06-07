@@ -32,6 +32,9 @@ const CategoriesBlock = styled.div`
 `;
 //styled-components 에서 기존 HTML에 접근 styled.div``
 // 리액트의 컴포넌트 css 작업 할 때, styled(NavLink)
+// 확장팩 : vscode-styled-component 설치하면.
+// 백틱 안에 속성이 기존에는 전부다 빨간색으로 구분 안됨.
+// 설치 후, 해당 속성의 요소가 구분도되고, 색깔 선택, 자동완성 등 여러 편의 기능이 탑재되어있다.
 const Category = styled(NavLink)`
   font-size: 1.2 rem;
   cursor: pointer;
@@ -46,15 +49,15 @@ const Category = styled(NavLink)`
 
   &.active {
     font-weight: 600;
-    border-bottom: 2px solid #22b8cf;
-    color: #22b8cf;
+    border-bottom: 2px solid #cf2225;
+    color: #22cf61;
     &:hover {
-      color: #3bc9db;
+      color: #dbce3b;
     }
   }
 
   & + & {
-    margin-left: 1rem;
+    margin-left: 5rem;
   }
 `;
 // const Category = styled.div`
