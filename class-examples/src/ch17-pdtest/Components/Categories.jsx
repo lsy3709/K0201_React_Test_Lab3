@@ -1,6 +1,9 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+//추가작업 NavLink -> 해당 URL 주소에 표기
+import { NavLink } from "react-router-dom";
+
 //name 은 작업 할 때 사용할 변수.
 //text 실제 웹 화면에 보이는 한글 이름.
 const categories = [
@@ -27,7 +30,9 @@ const CategoriesBlock = styled.div`
     overflow-x: auto;
   }
 `;
-const Category = styled.div`
+//styled-components 에서 기존 HTML에 접근 styled.div``
+// 리액트의 컴포넌트 css 작업 할 때, styled(NavLink)
+const Category = styled(NavLink)`
   font-size: 1.2 rem;
   cursor: pointer;
   white-space: pre;
@@ -39,35 +44,63 @@ const Category = styled.div`
     color: #495057;
   }
 
-  ${(props) =>
-    props.active &&
-    css`
-      font-weight: 600px;
-      border-bottom: 2px solid #22b8cf;
-      color: #22b8cf;
-      &:hover {
-        color: #3bc9db;
-      }
-    `}
+  &.active {
+    font-weight: 600;
+    border-bottom: 2px solid #22b8cf;
+    color: #22b8cf;
+    &:hover {
+      color: #3bc9db;
+    }
+  }
 
   & + & {
     margin-left: 1rem;
   }
 `;
+// const Category = styled.div`
+//   font-size: 1.2 rem;
+//   cursor: pointer;
+//   white-space: pre;
+//   text-decoration: none;
+//   color: inherit;
+//   padding-bottom: 0.2rem;
+
+//   &.hover {
+//     color: #495057;
+//   }
+
+// ${(props) =>
+//   props.active &&
+//   css`
+//     font-weight: 600px;
+//     border-bottom: 2px solid #22b8cf;
+//     color: #22b8cf;
+//     &:hover {
+//       color: #3bc9db;
+//     }
+//   `}
+
+// & + & {
+//   margin-left: 1rem;
+// }
+// `;
 
 // props 부모 -> 자식 데이터 전달. 사용.
 // state 끌어올리기, 자식 -> 부모 : 이벤트(부모에 설정이된 세터함수.)
 // 예) onSelect 함수가 호출이 되면, 부모쪽 App.js 에 선언된 세터함수가 호출 되면서, 업데이트가 됨.
 // props 객체 (읽기전용)-> 불변성. 순수함수.
-const Categories = ({ onSelect, category }) => {
+//
+
+//방법2 -> 라우팅 페이징으로 작업.
+const Categories = () => {
   return (
     <CategoriesBlock>
       {/* c -> name: 'food', text: '부산맛집정보 서비스' */}
       {categories.map((c) => (
         <Category
           key={c.name}
-          active={category === c.name}
-          onClick={() => onSelect(c.name)}
+          className={({ isActive }) => (isActive ? "active" : undefined)}
+          to={c.name === "food" ? "/" : `/${c.name}`}
         >
           {c.text}
         </Category>
@@ -75,5 +108,23 @@ const Categories = ({ onSelect, category }) => {
     </CategoriesBlock>
   );
 };
+
+// 방법1 : state 끌어올리기, 부모 에서 정의한 함수(내용은 세터함수. )
+// const Categories = ({ onSelect, category }) => {
+//   return (
+//     <CategoriesBlock>
+//       {/* c -> name: 'food', text: '부산맛집정보 서비스' */}
+//       {categories.map((c) => (
+//         <Category
+//           key={c.name}
+//           active={category === c.name}
+//           onClick={() => onSelect(c.name)}
+//         >
+//           {c.text}
+//         </Category>
+//       ))}
+//     </CategoriesBlock>
+//   );
+// };
 
 export default Categories;
